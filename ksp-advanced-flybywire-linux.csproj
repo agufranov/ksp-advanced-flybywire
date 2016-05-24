@@ -114,12 +114,15 @@
   <PropertyGroup>
     <PostBuildEvent>cp ksp-advanced-flybywire.dll ../../builds/linux/GameData/ksp-advanced-flybywire/
 cp ksp-advanced-flybywire.dll ../../builds/alpha/linux/
-rm -rf ../../obj/
-cp ksp-advanced-flybywire.dll ../../$(KSP_RELATIVE_PATH)/GameData/ksp-advanced-flybywire/
-rm -rf ../../bin/
-rm -rf ../../GameData
-mkdir ../../GameData
-cp -r ../../builds/linux/GameData/ksp-advanced-flybywire ../../GameData
+cd ../..
+rm -rf obj/
+rm -rf bin/
+rm release.zip
+rm -rf afbw-linux-1.1.2
+mkdir -p afbw-linux-1.1.2/GameData
+cp -r builds/linux/GameData/ksp-advanced-flybywire afbw-linux-1.1.2/GameData
+zip -r release.zip afbw-linux-1.1.2
+rm -rf afbw-linux-1.1.2
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
