@@ -63,10 +63,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>../../1.1.2/KSP_Data/Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(KSP_RELATIVE_PATH)/KSP_Data/Managed/Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="KSPUtil">
-      <HintPath>../../1.1.2/KSP_Data/Managed\KSPUtil.dll</HintPath>
+      <HintPath>$(KSP_RELATIVE_PATH)/KSP_Data/Managed/KSPUtil.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,13 +75,13 @@
     <Reference Include="System.Xml" />
     <Reference Include="Toolbar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>builds\linux\GameData\000_Toolbar\Toolbar.dll</HintPath>
+      <HintPath>$(KSP_RELATIVE_PATH)/GameData/000_Toolbar/Toolbar.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>../../1.1.2/KSP_Data/Managed\UnityEngine.dll</HintPath>
+      <HintPath>$(KSP_RELATIVE_PATH)/KSP_Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>../../1.1.2/KSP_Data/Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(KSP_RELATIVE_PATH)/KSP_Data/Managed/UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -112,10 +112,16 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y ksp-advanced-flybywire.dll ..\..\builds\linux\GameData\ksp-advanced-flybywire\
-xcopy /Y ksp-advanced-flybywire.dll ..\..\builds\alpha\linux\
-rmdir /S /q ..\..\obj\
-xcopy /Y ksp-advanced-flybywire.dll "$(KSP_PATH)GameData\ksp-advanced-flybywire\"</PostBuildEvent>
+    <PostBuildEvent>cp ksp-advanced-flybywire.dll ../../builds/linux/GameData/ksp-advanced-flybywire/
+cp ksp-advanced-flybywire.dll ../../builds/alpha/linux/
+cd ../..
+rm -rf obj/
+rm -rf bin/
+rm release.zip
+cp -r builds/linux/GameData/ksp-advanced-flybywire/* afbw-linux-1.1.2
+zip -r release.zip afbw-linux-1.1.2
+rm -rf afbw-linux-1.1.2
+</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
