@@ -117,6 +117,9 @@ cp ksp-advanced-flybywire.dll ../../builds/alpha/linux/
 rm -rf ../../obj/
 cp ksp-advanced-flybywire.dll ../../$(KSP_RELATIVE_PATH)/GameData/ksp-advanced-flybywire/
 rm -rf ../../bin/
+rm -rf ../../GameData
+mkdir ../../GameData
+cp -r ../../builds/linux/GameData/ksp-advanced-flybywire ../../GameData
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
