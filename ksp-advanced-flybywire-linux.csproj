@@ -118,9 +118,7 @@ cd ../..
 rm -rf obj/
 rm -rf bin/
 rm release.zip
-rm -rf afbw-linux-1.1.2
-mkdir -p afbw-linux-1.1.2/GameData
-cp -r builds/linux/GameData/ksp-advanced-flybywire afbw-linux-1.1.2/GameData
+cp -r builds/linux/GameData/ksp-advanced-flybywire/* afbw-linux-1.1.2
 zip -r release.zip afbw-linux-1.1.2
 rm -rf afbw-linux-1.1.2
 </PostBuildEvent>
